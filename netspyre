@@ -1,0 +1,2 @@
+#!/bin/bash
+cd /usr/share/netspyre/ && /usr/bin/env python3 netspyre.py

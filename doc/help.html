@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+
+<h1 id="Documentation">Documentation</h3>
+	<div class="entry-content">
+		<p>This documentation will grow organically and is a work in progress.</p>
+<h3 id="configuration">Configuration</h3>
+<p>At present, NETSPYRE provides configuration options with the help of the <strong>netspyre.conf</strong> file which is located within NETSPYRE's root folder. When NETSPYRE is launched, it would verify the presence of this file. If it is not found, NETSPYRE would instead generate a new one with default settings. However in the upcoming versions, the developer of NETSPYRE aspires to introduce a user-friendly settings menu. This enhancement will eliminate the need for manual file editing and offer a more convenient and secure way to modify the configurations. </p>
+<p><strong>CAUTION: Please refrain from deleting any of the lines within the netspyre.conf file, except for the tools, as it could result in a loss of functionality of the system. Additionaly, kindly be aware that the configuration values are case-sensitive.</strong></p>
+<p>&nbsp;</p>
+<h4 id="adding-actions">Incorporating new actions</h4>
+<p>In NETSPYRE, it's actions are categorized into three distinct classes:</p>
+<ul>
+<li><strong>Host Actions:</strong> These actions are typically triggered by right-clicking on a <strong>host</strong> and then the results produced by them (the tools) are saved and shown within NETSPYRE.</li>
+<li><strong>Port Actions:</strong> It can initiate these actions by right-clicking on a specific <strong>port or service</strong> The tool output which is then geenrated would also store and be shown within NETSPYRE. Nikto is a great example of a port action.</li>
+<li><strong>Terminal Actions:</strong> When you right-click on a <strong>port</strong> this would trigger an external terminal window. For example, you would be able to open the FTP client via Terminal Actions.</li>
+</ul>
+<p>&nbsp;</p>
+<p>To set up a new action, the following format should be adhered:<br />
+<center><strong><em>tool=label, command, services</em></strong></center></p>
+<p><strong>tool</strong> is a unique identifier, typically the name of the tool.</p>
+<p><strong>label</strong> is the text that will appear in the context menu.</p>
+<p><strong>command</strong> field specifies the non-interactive terminal command which was used to execute the tool. It is also important to make sure that the command does not require manual input. During the runtime, parameter such as  [IP], [PORT], and [OUTPUT] will be automatically substituted with the appropriate values.</p>
+<p><strong>services</strong> field holds a list of nmap service nmaes to which the tool is most applicable for. When you would right-click on a specific port of service, the tool will only appear in the meny if it is associated with a specific service. This field is not utilized in the Host Actions for obvious reasons.</p>
+<p>&nbsp;</p>
+<p>Example:<br />
+To set up Nikto as a port action, certain strings should be included in the following line within the [PortActions] segment of the netspyre.conf file:</p>
+<p><strong><em>nikto=Run nikto, nikto -o [OUTPUT].txt -p [PORT] -h [IP], &#8220;http,https&#8221;</em></strong></p>
+<p>&nbsp;</p>
+<p>Once the configuration file has been modified, it's necessary to restart NETSPYRE to apply these changes. However, in the future, this step will no longer be applicable with the introduction of the settings menu. </p>
+<p>&nbsp;</p>
+<h4 id="conf-auto-attacks">Configuring automated attacks</h4>
+<p>NETSPYRE can also be configured to initiate the automatic execution of any sort of tool that has been defined with the [PortActions] segment of the configuration file when a service has been detected. </p>
+<p>By default, the automated attacks are enabled. but they can easily be deactivated by modifying the "enable-scheduler" option which is found in the [GeneralSettings] section part of the configuration file.</p>
+<p>The setup for automated attacks is specified in the [SchedulerSettings] section of the configuration file, using the following format:</p>
+<p><center><strong><em>tool=services, protocol</em></strong></center></p>
+<p><strong>tool</strong> serves as the unique identifier that was previously employed to define the tool within the [PortActions] section.</p>
+<p><strong>services</strong> designates the protocol (tcp/udp) on which the tool should operate in response to the identified service.</p>
+<p><strong>protocol</strong> is the protocol of the service the tool should run on (tcp/udp).</p>
+			</div><!-- .entry-content -->
+
+
+<h3 id="Feedback">Feedback</h3>
+<p>The developer of this system would highly appreciate your feedback, as it plays a crucial role in enhancing the NETSPYRE system into an even more exceptional tool!</p>
+<p>Given that the developer's expertise lies in penetration testing rather than development, there might be a few instances where you come across a few bugs. </p>
+<p></a></p>
+<h3 id="License-Disclaimer">License / Disclaimer</h3>
+<p>NETSPYRE comes without warranty and is meant to be used by penetration testers during network infrastructure security assessments.</p>
+<p>The developer of this tool decline all responsibility:<br />
+&#8211; in case the tool is used for malicious purposes or in any illegal context;<br />
+&#8211; in case the tool crashes your system or other systems.</p>
+<h3 id="Authors">Authors</h3>
+<p>NETSPYRE was created and developed by:</p>
+<p>Vikram Prasad<br />
+			</div><!-- .entry-content -->
+	</article><!-- #post-## -->
+			
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+</body>
+</html>
